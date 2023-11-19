@@ -35,7 +35,6 @@ function choose_decimal() {
   hexadecimal.innerHTML = `<a class="btn btn-primary" onclick="choose_hexadecimal()" >Hexadecimal</a>`;
   user_choose = "decimal";
   result_show.innerHTML = "";
-
 }
 
 function choose_to_decimal() {
@@ -45,7 +44,6 @@ function choose_to_decimal() {
   user_choose_to = "decimal";
   CB.innerHTML = `<a class="btn btn-success  w-50" onclick="convert()">Convert</a>`;
   result_show.innerHTML = "";
-
 }
 
 function choose_hexadecimal() {
@@ -55,7 +53,6 @@ function choose_hexadecimal() {
   decimal.innerHTML = `<a class="btn btn-primary" onclick="choose_decimal()" >Decimal</a>`;
   user_choose = "hexadecimal";
   result_show.innerHTML = "";
-
 }
 
 function choose_to_hexadecimal() {
@@ -65,7 +62,6 @@ function choose_to_hexadecimal() {
   user_choose_to = "hexadecimal";
   CB.innerHTML = `<a class="btn btn-success  w-50" onclick="convert()">Convert</a>`;
   result_show.innerHTML = "";
-
 }
 
 function unchoose_binary() {
@@ -73,14 +69,12 @@ function unchoose_binary() {
   type.innerText = "";
   CB.innerHTML = `<a class="btn btn-secondary  w-50 disabled">Convert</a>`;
   result_show.innerHTML = "";
-
 }
 
 function unchoose_to_binary() {
   to_binary.innerHTML = `<a class="btn btn-primary" onclick="choose_to_binary()" >Binary</a>`;
   CB.innerHTML = `<a class="btn btn-secondary  w-50 disabled">Convert</a>`;
   result_show.innerHTML = "";
-
 }
 
 function unchoose_decimal() {
@@ -88,14 +82,12 @@ function unchoose_decimal() {
   type.innerText = "";
   CB.innerHTML = `<a class="btn btn-secondary  w-50 disabled">Convert</a>`;
   result_show.innerHTML = "";
-
 }
 
 function unchoose_to_decimal() {
   to_decimal.innerHTML = `<a class="btn btn-primary" onclick="choose_to_decimal()" >Decimal</a>`;
   CB.innerHTML = `<a class="btn btn-secondary  w-50 disabled">Convert</a>`;
   result_show.innerHTML = "";
-
 }
 
 function unchoose_hexadecimal() {
@@ -103,14 +95,12 @@ function unchoose_hexadecimal() {
   type.innerText = "";
   CB.innerHTML = `<a class="btn btn-secondary  w-50 disabled">Convert</a>`;
   result_binary.innerHTML = "";
-
 }
 
 function unchoose_to_hexadecimal() {
   to_hexadecimal.innerHTML = `<a class="btn btn-primary" onclick="choose_to_hexadecimal()" >Hexadecimal</a>`;
   CB.innerHTML = `<a class="btn btn-secondary  w-50 disabled">Convert</a>`;
   result_binary.innerHTML = "";
-
 }
 
 async function convert() {
@@ -122,39 +112,27 @@ async function convert() {
     alert(`Please insert decimal code`);
   } else if (inputwithspace == "" && user_choose == "hexadecimal") {
     alert(`Please insert hexadecimal code`);
-  }
-  else if (inputwithspace == "" && user_choose_to == "binary") {
+  } else if (inputwithspace == "" && user_choose_to == "binary") {
     alert(`Please insert binary code`);
   } else if (inputwithspace == "" && user_choose_to == "decimal") {
     alert(`Please insert decimal code`);
   } else if (inputwithspace == "" && user_choose_to == "hexadecimal") {
     alert(`Please insert hexadecimal code`);
-  }
-  else {
-
+  } else {
     if (user_choose == "binary" && user_choose_to == "decimal") {
-      // convert_binary_to_hexadecimal(input);
-    }
-
-    else if (user_choose == "binary" && user_choose_to == "hexadecimal") {
-       convert_binary_to_hexadecimal(input);
-    }
-
-    else if (user_choose == "decimal" && user_choose_to == "binary") {
+      convert_binary(input);
+    } else if (user_choose == "binary" && user_choose_to == "hexadecimal") {
+      convert_binary_to_hexadecimal(input);
+    } else if (user_choose == "decimal" && user_choose_to == "binary") {
       convert_decimal(input);
       // convert_decimal_to_hex(input);
-    }
-
-    else if (user_choose == "decimal" && user_choose_to == "hexadecimal") {
+    } else if (user_choose == "decimal" && user_choose_to == "hexadecimal") {
       convert_decimal_to_hex(input);
-    }
-    else if (user_choose == "hexadecimal" && user_choose_to == "binary") {
+    } else if (user_choose == "hexadecimal" && user_choose_to == "binary") {
       convert_hexadecimal(input);
       //const hex_to_bi = await convert_hexadecimal(input);
       //convert_binary(hex_to_bi);
-    }
-
-    else if (user_choose == "hexadecimal" && user_choose_to == "decimal") {
+    } else if (user_choose == "hexadecimal" && user_choose_to == "decimal") {
       const hex_to_bi = await convert_hexadecimal(input);
       convert_binary(hex_to_bi);
     }
@@ -201,10 +179,8 @@ async function convert_decimal(input_decimal) {
     result_show.innerHTML = `Binary code is 0`;
   }
   if (check_one == "1") {
-    result_show.innerHTML = 'Binary code is 1';
-  }
-
-  else{
+    result_show.innerHTML = "Binary code is 1";
+  } else {
     for (f in input_decimal) {
       if (
         !(
@@ -257,9 +233,7 @@ async function convert_decimal_to_hex(input_decimal) {
     result_show.innerHTML = `Binary code is 0`;
   } else if (check_one == "1") {
     result_show.innerHTML = `Binary code is 1`;
-  }
-
-  else{
+  } else {
     for (f in input_decimal) {
       if (
         !(
@@ -299,23 +273,20 @@ async function convert_decimal_to_hex(input_decimal) {
       let str_result_decimal = array_of_decimal.reverse();
       str_result_decimal = str_result_decimal.toString();
       let result = await str_result_decimal.replaceAll(",", "");
-  
-  
+
       // Reuse Code
-  
       let B_to_H = [];
       let loop_of_4bit = 4;
       let x = 0;
       let y = 0;
       let array_of_binary = [];
       let visual_array = [];
-  
+
       for (i in result) {
         array_of_binary.push(await result.charAt(i));
       }
-  
+
       array_of_binary.reverse();
-  
       while (array_of_binary.length >= 1) {
         if (array_of_binary.length >= 4) {
           {
@@ -323,6 +294,7 @@ async function convert_decimal_to_hex(input_decimal) {
               visual_array.push(array_of_binary[x]);
               x += 1;
             }
+            x = 0;
             visual_array.reverse();
             let visual_array_tostring = visual_array.toString();
             visual_array_tostring = visual_array_tostring.replaceAll(",", "");
@@ -361,15 +333,17 @@ async function convert_decimal_to_hex(input_decimal) {
           B_to_H.push(await convert_binary_h_lego(b_to_h_tostring));
           break;
         }
-  
+
         while (y < loop_of_4bit) {
           array_of_binary.shift();
           y += 1;
         }
+        y = 0;
       }
       B_to_H.reverse();
       let result_binary_to_hexadecimal = B_to_H.toString();
-      result_binary_to_hexadecimal = await result_binary_to_hexadecimal.replaceAll(",", "");
+      result_binary_to_hexadecimal =
+        await result_binary_to_hexadecimal.replaceAll(",", "");
       result_show.innerHTML = `Hexadecimal code is ${result_binary_to_hexadecimal}`;
     }
   }
@@ -483,11 +457,11 @@ async function convert_binary_h_lego(input_binary) {
     alert(`Please insert binary number 0-1`);
     window.location.reload();
   } else {
-    const reverse_binary = array_of_binary.reverse();
+    let reverse_binary = array_of_binary.reverse();
     let result = 0;
     for (k in reverse_binary) {
       if (reverse_binary[k] == 1) {
-        result += 2 ** k;
+        result += (2 ** k);
       } else {
         continue;
       }
@@ -509,7 +483,6 @@ async function convert_binary_to_hexadecimal(input_binary) {
   }
 
   array_of_binary.reverse();
-
   while (array_of_binary.length >= 1) {
     if (array_of_binary.length >= 4) {
       {
@@ -517,6 +490,7 @@ async function convert_binary_to_hexadecimal(input_binary) {
           visual_array.push(array_of_binary[x]);
           x += 1;
         }
+        x = 0;
         visual_array.reverse();
         let visual_array_tostring = visual_array.toString();
         visual_array_tostring = visual_array_tostring.replaceAll(",", "");
@@ -546,6 +520,7 @@ async function convert_binary_to_hexadecimal(input_binary) {
           B_to_H.push(await convert_binary_h_lego(visual_array_tostring));
         }
         visual_array = [];
+        
       }
     } else if (array_of_binary.length <= 3) {
       array_of_binary.reverse();
@@ -560,12 +535,10 @@ async function convert_binary_to_hexadecimal(input_binary) {
       array_of_binary.shift();
       y += 1;
     }
+    y = 0;
   }
   B_to_H.reverse();
   let result_binary_to_hexadecimal = B_to_H.toString();
-  result_binary_to_hexadecimal = await result_binary_to_hexadecimal.replaceAll(
-    ",",
-    ""
-  );
+  result_binary_to_hexadecimal = await result_binary_to_hexadecimal.replaceAll(",","");
   result_show.innerHTML = `Hexadecimal code is ${result_binary_to_hexadecimal}`;
 }
